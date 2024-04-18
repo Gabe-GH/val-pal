@@ -1,0 +1,47 @@
+@font-face {
+    font-family: 'Valorant_Font';
+    src: url('./public/fonts/Valorant_Font.ttf') format('truetype');
+}
+
+html body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, rgb(8, 8, 8) 30%, rgb(10, 10, 10) 37%, #0D0D12);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: white;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+.PageLogo {
+    margin-left: 5%;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-right: 5%;
+    width: 30%;
+}
+
+nav ul li a {
+    color: inherit;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.Links {
+    font-family: 'Valorant_Font', sans-serif;
+}
+

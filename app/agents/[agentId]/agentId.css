@@ -1,0 +1,153 @@
+/* Agent Description */
+
+.AgentDescriptionStyle {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.AgentInfoStyle {
+    margin: 0 0% 0 10%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    min-width: 40%;
+    max-width: 40%;
+}
+
+.AgentNumberStyle  {
+    margin-top: auto;
+    margin-right: 5%;
+    padding-bottom: 1.5%;
+    font-size: 5rem;
+    color: grey;
+    /* background-color: purple; */
+    height: min-content;
+}
+
+.AgentNameStyle {
+    font-size: 6em;
+    text-align: center;
+    /* background-color: pink; */
+    margin: 0;
+    padding-top: 0%;
+}
+
+.AgentBioStyle{
+    /* background-color: red; */
+    font-size: 2rem;
+}
+
+hr {
+    width: 100%;
+    border: 0;
+    border-top: 5px solid #ffffff;
+}
+
+.AgentImagesStyle {
+    position: relative;
+    /* background-color: red; */
+    /* flex-grow: 2;*/
+    margin: 0 10% 0 10%;
+    width: min-content;
+    flex-shrink: 1.5;
+}
+
+.AgentPortraitStyle {
+    position: relative;
+    left: 5%;
+    z-index: 3;
+}
+
+.AgentBackgroundStyle{
+    top: 0;
+    left: 0;
+    position: absolute;
+    z-index: 1;
+}
+
+@media (max-width: 768px) {
+    .AgentInfoStyle {
+        flex-shrink: 0;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+
+    }
+}
+
+/* Agent Role */
+.AgentRoleStyle {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.RoleIconStyle {
+    margin-left: 5%;
+}
+
+.RoleStyle {
+    width: 30%;
+
+}
+
+.RoleNameStyle {
+    font-size: 6em;
+    /* background-color: pink; */
+    margin: 0;
+    padding-top: 5%;
+}
+
+.RoleDescriptionStyle {
+    font-size: 2rem;
+}
+
+/* Abilities */
+ul {
+    list-style: none;
+}
+
+.AbilitySectionStyle {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 7%;
+    justify-content: space-evenly;
+}
+
+.AbilityIconStyle {
+    opacity: 50%;
+    scale: .5;
+    cursor: pointer;
+}
+
+.SelectedAbility .AbilityIconStyle {
+    opacity: 100%;
+    scale: 1;
+}
+
+.AbilityTitleStyle {
+    font-size: 6em;
+    margin-left: 10%;
+    font-weight: 800;
+}
+
+.AbilityListStyle {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.SelectedAbilitySection {
+    margin-top: 5%;
+    padding-top: 4%;
+    padding: 0 20%
+}
+
+.SelectedAbilityTitle {
+    font-size: 3.5em;
+}
+
+.SelectedAbilityDescription {
+    font-size: 2em;
+}
