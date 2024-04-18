@@ -151,3 +151,27 @@ ul {
 .SelectedAbilityDescription {
     font-size: 2em;
 }
+
+/* Carousel */
+.agent-carousel {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 20px 0;
+    margin: 0 auto;
+    width: 80%;
+  }
+  
+  .agent-carousel-inner {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .agent-icon {
+    cursor: pointer;
+    opacity: .5;
+    transition: opacity 0.3s ease;
+  }
+  
+  .agent-icon.selected {
+    opacity: 1;
+  }

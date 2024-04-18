@@ -2,10 +2,21 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useParams } from 'next/navigation';
 
-import AgentPortrait from '../../public/images/Jett_fullPortrait.png';
-import AgentBackground from '../../public/images/Jett_background.png';
+import JettPortrait from '../../public/images/Jett/Jett_fullPortrait.png';
+import JettBackground from '../../public/images/Jett/Jett_background.png';
+import JettHeadIcon from '../../public/images/Jett/Jett_displayIcon.png';
+
+import AstraPortrait from '../../public/images/Astra/Astra_fullPortrait.png';
+import AstraBackground from '../../public/images/Astra/Astra_background.png';
+import AstraHeadIcon from '../../public/images/Astra/Astra_displayIcon.png';
+
+import CypherPortrait from '../../public/images/Cypher/Cypher_fullPortrait.png';
+import CypherHeadIcon from '../../public/images/Cypher/Cypher_displayIcon.png';
+import CypherBackground from '../../public/images/Cypher/Cypher_background.png';
+
 import RoleIcon from '../../public/images/Duelist.png';
 import UpdraftIcon from '../../public/images/Jett_Updraft.png';
 import TailwindIcon from '../../public/images/Jett_Tailwind.png';
@@ -17,7 +28,6 @@ import './agentId.css';
 import { road_rage } from '../../ui/fonts';
 
 
-const AgentNumber = 11;
 
 
 const Abilities = [
@@ -48,22 +58,74 @@ const Role = `Duelist`;
 
 const RoleDescription = `Duelists are self-sufficient fraggers who their team expects, through abilities and skills, to get high frags and seek out engagements first.`
 
-
 const DynamicPage = () => {
   const params = useParams();
 
-  const AgentName = params.agentId[0].toUpperCase() + params.agentId.slice(1);
+  const AgentList = {
+    'Jett': 0,
+    'Astra': 1,
+    'Cypher': 2
+  };
+
+  const Agents = [
+  {
+    AgentName: 'Jett',
+    AgentNumber: '11',
+    AgentPortrait: JettPortrait,
+    AgentHeadIcon: JettHeadIcon,
+    AgentBackground: JettBackground
+  },
+  {
+    AgentName: 'Astra',
+    AgentNumber: '15',
+    AgentPortrait: AstraPortrait,
+    AgentHeadIcon: AstraHeadIcon,
+    AgentBackground: AstraBackground
+  },
+  {
+    AgentName: 'Cypher',
+    AgentNumber: '06',
+    AgentPortrait: CypherPortrait,
+    AgentHeadIcon: CypherHeadIcon,
+    AgentBackground: CypherBackground
+  },
+]
+  console.log(params.agentId);
+  const currentAgent = AgentList[params.agentId];
+
+  // const AgentName = params.agentId[0].toUpperCase() + params.agentId.slice(1);
+  const [selectedAgent, setSelectedAgent] = useState(Agents[currentAgent]); // Set the initial selected agent
+
+  const handleAgentSelect = (agent) => {
+    setSelectedAgent(agent); // Update the selected agent state
+  };
 
   return (
     <div>
+      {/* Carousel */}
+      <div className="agent-carousel">
+        <div className="agent-carousel-inner">
+          {Agents.map((agent, index) => (
+              <Link href={`/agents/${agent.AgentName}`} key={index} className={`agent-icon ${selectedAgent.AgentName === agent.AgentName ? 'selected' : ''}`}>
+                <Image
+                  src={agent.AgentHeadIcon}
+                  width={80}
+                  height={80}
+                  alt={`Picture of agent ${agent.AgentName}`}
+                  priority
+                />
+              </Link>
+          ))}
+        </div>
+      </div>
 
       {/* Agent Description */}
       <AgentDescription
-        AgentNumber={AgentNumber}
-        AgentName={AgentName}
+        AgentNumber={selectedAgent.AgentNumber}
+        AgentName={selectedAgent.AgentName}
         AgentBio={AgentBio}
-        AgentPortrait={AgentPortrait}
-        AgentBackground={AgentBackground}
+        AgentPortrait={selectedAgent.AgentPortrait}
+        AgentBackground={selectedAgent.AgentBackground}
       />
 
       {/* Agent Role */}
@@ -79,6 +141,11 @@ const DynamicPage = () => {
     </div>
   );
 };
+
+const AgentCarousel = () => {
+
+};
+
 
 
 const AgentDescription = ({ AgentNumber, AgentName, AgentBio, AgentPortrait, AgentBackground }) => {
@@ -148,9 +215,9 @@ const AgentAbilities = ({ abilities }) => {
         {
           Abilities.map((ability, index) => {
             return (
-              <li 
-                key={index} 
-                onClick={() =>{ handleAbilitySelect(ability)}}
+              <li
+                key={index}
+                onClick={() => { handleAbilitySelect(ability) }}
                 className={selectedAbility.name === ability.name ? 'SelectedAbility' : ''}
               >
                 <Image
